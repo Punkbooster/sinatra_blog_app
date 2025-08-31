@@ -1,5 +1,5 @@
 # set the database based on the current environment
-database_name = "sinatra-blog-#{SinatraBlogApp.environment}"
+database_name = "sinatra-blog-#{ApplicationController.environment}"
 
 db = URI.parse(ENV["DATABASE_URL"] || "postgres://localhost/#{database_name}")
 

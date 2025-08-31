@@ -1,16 +1,15 @@
-class SinatraBlogApp < Sinatra::Base
-
-  get "/" do
+class BlogsController < ApplicationController
+  get "/new" do
     erb :"blogs/new"
   end
 
-  get "/blogs/:id" do
+  get "/:id" do
     @blog = Blog.find(params[:id])
 
     erb :"blogs/show"
   end
 
-  post "/" do
+  post "/new" do
     blog = Blog.new(params["blog"])
 
     if blog.save
