@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 gem "rack"
 gem "sinatra"
+gem "sinatra-contrib" # Includes sinatra/reloader for automatic code reloading
 gem "pg"
 gem "sinatra-activerecord"
 gem "tux" # interactive console similar to rails c
-gem "shotgun" # rack app code realod without server restart
+gem "puma" # Add a web server

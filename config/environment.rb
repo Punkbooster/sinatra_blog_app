@@ -13,8 +13,15 @@ Dir.glob(File.join(APP_ROOT, "app", "models", "*.rb")).each { |file| require fil
 # require database configurations
 require File.join(APP_ROOT, "config", "database")
 
-# configure SinatraBlog settings
 class SinatraBlogApp < Sinatra::Base
+  # Enable the reloader in development
+  configure :development do
+    register Sinatra::Reloader
+    # Enable automatic reloading of controllers and models
+    also_reload File.join(APP_ROOT, "app", "controllers", "*.rb")
+    also_reload File.join(APP_ROOT, "app", "models", "*.rb")
+  end
+
   set :method_override, true
   set :root, APP_ROOT
   set :views, File.join(APP_ROOT, "app", "views")

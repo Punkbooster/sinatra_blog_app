@@ -1,4 +1,4 @@
-class ApplicationController < Sinatra::Base
+class SinatraBlogApp < Sinatra::Base
 
   get "/" do
     erb :"blogs/new"
