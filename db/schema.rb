@@ -19,5 +19,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_31_142610) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_blogs_on_title"
   end
 end

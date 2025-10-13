@@ -2,10 +2,27 @@
 
 <html>
   <head>
-    <title>Sinatra Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Arsen Uhliar</title>
+
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="">
+    <header class="header">
+      <div class="header__logo">
+        My Blog Logo
+      </div>
+      <nav class="header__links">
+        <a href="/archives" class="header__link">Archives</a>
+        <a href="/about" class="header__link">About</a>
+        <a href="https://github.com/Punkbooster" target="_blank" rel="noopener noreferrer" class="header__link">Github</a>
+      </nav>
+    </header>
+
+    <main class="content-wrapper">
+      <%= yield %>
+    </main>
   </body>
 </html>

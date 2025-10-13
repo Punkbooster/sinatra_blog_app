@@ -1,7 +1,19 @@
-<h1>Welcome to my block</h1>
+<h1>Welcome to my blog</h1>
 
-<% @blogs.each do |blog| %>
-  <div>
-    <%= blog.title %>
-  </div>
-<% end %>
+<section>
+  <h2>Articles</h2>
+
+  <ul>
+    <% @blogs.each do |blog| %>
+      <li>
+        <a href="/blogs/<%= blog.id %>">
+            <%= blog.title %>
+        </a>
+        -
+        <time>
+          <%= blog.created_at.strftime("%-d %B %Y") %>
+        </time>
+      </li>
+    <% end %>
+  </ul>
+</section>

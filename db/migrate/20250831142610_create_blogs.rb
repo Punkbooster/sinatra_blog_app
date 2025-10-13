@@ -5,5 +5,7 @@ class CreateBlogs < ActiveRecord::Migration[8.0]
       t.text :content
       t.timestamps null: false
     end
+
+    add_index :blogs, :title
   end
 end
