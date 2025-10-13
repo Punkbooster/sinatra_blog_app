@@ -1,2 +1,3 @@
 <h1><%= @blog.title %></h1>
+<p>Posted on <%= @blog.created_at.strftime("%-d %B %Y")%></p>
 <p><%= @blog.content %></p>
