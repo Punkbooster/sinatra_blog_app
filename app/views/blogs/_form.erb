@@ -1,0 +1,9 @@
+<form class="blog-form" action="<%= action %>" method="post">
+  <% if method == "put" %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <input type="text" name="blog[title]" placeholder="Enter your blog's title…" value="<%= blog&.title %>"><br>
+  <textarea name="blog[content]" rows="8" cols="80"><%= blog&.content %></textarea>
+  <input type="submit" value="<%= submit_text %>">
+</form>

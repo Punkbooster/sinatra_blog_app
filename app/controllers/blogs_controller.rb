@@ -4,9 +4,33 @@ class BlogsController < ApplicationController
   end
 
   get "/:id" do
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find_by(id: params[:id])
 
-    erb :"blogs/show"
+    if @blog
+      erb :"blogs/show"
+    else
+      redirect "/"
+    end
+  end
+
+  get "/edit/:id" do
+    @blog = Blog.find_by(id: params[:id])
+
+    if @blog
+       erb :"blogs/edit"
+    else
+      redirect "/"
+    end
+  end
+
+  put "/:id" do
+    @blog = Blog.find_by(id: params[:id])
+
+    if @blog && @blog.update(params["blog"])
+      redirect "/blogs/#{@blog.id}"
+    else
+      erb :"blogs/edit"
+    end
   end
 
   post "/new" do
