@@ -9,3 +9,5 @@ gem "pry"
 gem "puma" # Add a web server
 gem "rake"
 gem "foreman", "~> 0.89.1"
+gem "commonmarker"
+gem "sanitize"
