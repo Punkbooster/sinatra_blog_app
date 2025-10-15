@@ -1,6 +1,9 @@
-<h1><%= @blog.title %></h1>
-<p>Posted on <%= @blog.created_at.strftime("%-d %B %Y")%></p>
+<div>
+  <div class="title-section">
+    <h1><%= @blog.title %></h1>
+    <a href="/blogs/edit/<%= @blog.id %>" class="button-regular">Edit</a>
+  </div>
+  <p>Posted on <%= @blog.created_at.strftime("%-d %B %Y")%></p>
 
-<p><%= markdown_to_html(@blog.content) %></p>
-
-<a href="/blogs/edit/<%= @blog.id %>" class="button-regular"><button>Edit</button></a>
+  <p><%= markdown_to_html(@blog.content) %></p>
+</div>
