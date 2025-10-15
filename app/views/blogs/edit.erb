@@ -1,13 +1,16 @@
-<h1>Edit Blog Post</h1>
+<div>
+  <div class="title-section">
+    <h1>Edit Blog Post</h1>
+    <a href="/blogs/<%= @blog.id %>" class="button-regular">Back</a>
+  </div>
 
-<% if @blog.errors.any? %>
-  <ul>
-    <% @blog.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @blog.errors.any? %>
+    <ul>
+      <% @blog.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<%= erb :"blogs/_form", locals: { action: "/blogs/#{@blog.id}", method: "put", blog: @blog, submit_text: "Update Blog" } %>
-
-<a href="/blogs/<%= @blog.id %>">Back to Blog</a>
+  <%= erb :"blogs/_form", locals: { action: "/blogs/#{@blog.id}", method: "put", blog: @blog, submit_text: "Update Blog" } %>
+</div>

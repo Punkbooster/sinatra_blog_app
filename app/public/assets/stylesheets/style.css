@@ -1,3 +1,4 @@
+@import url('_normalize.css');
 @import url('_header.css');
 
 body {
@@ -7,17 +8,90 @@ body {
   margin: 0;
 }
 
-p {
-  font-size: 16px;
+.clearfix:after {
+ 	content: ".";
+ 	visibility: hidden;
+ 	display: block;
+ 	height: 0;
+ 	clear: both;
+ }
+
+html, body {
+  font-family: 'Raleway', sans-serif;
 }
 
-h1 {
-  font-size: 24px;
-  color: darkblue;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .content-wrapper {
   max-width: 900px;
   margin: 0 auto;
   width: 90%;
+}
+
+#main_content {
+  #header {
+ 		margin-top: 0px;
+ 		padding: 1em 3em;
+ 		border-bottom: 1px solid #d6dce0;
+ 		background: #f5f7f9;
+ 		color: #9eafba;
+ 		p {
+ 			display: inline;
+ 		}
+ 		a {
+ 			color: #9eafba;
+ 			text-decoration: none;
+ 		}
+ 		.buttons {
+ 			float: right;
+ 			margin-top: -6px;
+ 			.button {
+ 				font-size: .8em;
+ 				margin-left: .5em;
+      }
+		}
+	}
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  width: 100%;
+  border: 1px solid #d6dce0;
+  border-radius: .35em;
+  margin-top: 10px;
+  padding: .5em 1em;
+  line-height: 1.75;
+  height: 35px;
+}
+
+textarea {
+  min-height: 180px;
+}
+
+.button-regular {
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #d6dce0;
+  padding: .5em 1.5em;
+  font-size: 1.1em;
+  border-radius: 1.5em;
+  height: fit-content;
+  &:hover {
+    border: 1px solid #33acb7;
+    color: #33acb7;
+  }
+}
+
+.title-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
