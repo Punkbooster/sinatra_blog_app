@@ -1,12 +1,15 @@
 class ApplicationController < Sinatra::Base
   APP_ROOT = File.expand_path("../..", __dir__)
-  require_relative "../helpers/markdown_helper"
-  require_relative "../helpers/authorization_helper"
-  require_relative '../utils/protected_action'
+
   require "dotenv/load"
 
-  helpers MarkdownHelper
-  helpers AuthorizationHelper
+  Dir[File.join(APP_ROOT, "app", "helpers", "*.rb")].each { |file| require file }
+  Dir[File.join(APP_ROOT, "app", "utils", "*.rb")].each { |file| require file }
+
+  Dir[File.join(APP_ROOT, "app", "helpers", "*.rb")].each do |file|
+    module_name = File.basename(file, ".rb").split("_").map(&:capitalize).join
+    helpers Object.const_get(module_name)
+  end
 
   set :method_override, true
   set :root, APP_ROOT
