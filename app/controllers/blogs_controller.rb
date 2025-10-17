@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   get "/new" do
+    protect!
+
     erb :"blogs/new"
   end
 
@@ -36,6 +38,8 @@ class BlogsController < ApplicationController
   end
 
   post "/new" do
+    protect!
+
     blog = Blog.new(params["blog"])
 
     if blog.save

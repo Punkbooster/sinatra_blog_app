@@ -1,10 +1,11 @@
 @import url('_normalize.css');
 @import url('_header.css');
+@import url('colors.css');
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--color-background);
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -35,34 +36,9 @@ a {
   width: 90%;
 }
 
-#main_content {
-  #header {
- 		margin-top: 0px;
- 		padding: 1em 3em;
- 		border-bottom: 1px solid #d6dce0;
- 		background: #f5f7f9;
- 		color: #9eafba;
- 		p {
- 			display: inline;
- 		}
- 		a {
- 			color: #9eafba;
- 			text-decoration: none;
- 		}
- 		.buttons {
- 			float: right;
- 			margin-top: -6px;
- 			.button {
- 				font-size: .8em;
- 				margin-left: .5em;
-      }
-		}
-	}
-}
-
 input[type="text"], input[type="email"], input[type="password"], textarea {
   width: 100%;
-  border: 1px solid #d6dce0;
+  border: 1px solid var(--color-border);
   border-radius: .35em;
   padding: .5em 1em;
   line-height: 1.75;
@@ -83,15 +59,15 @@ textarea {
   outline: none;
   cursor: pointer;
   background: transparent;
-  border: 1px solid #d6dce0;
+  border: 1px solid var(--color-border);
   padding: .5em 1.5em;
   font-size: 1.1em;
   border-radius: 1.5em;
   height: fit-content;
   width: fit-content;
   &:hover {
-    border: 1px solid #33acb7;
-    color: #33acb7;
+    border: 1px solid var(--color-hover);
+    color: var(--color-hover);
   }
 }
 
