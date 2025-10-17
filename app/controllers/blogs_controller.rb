@@ -13,7 +13,9 @@ class BlogsController < ApplicationController
     end
   end
 
-  get "/edit/:id", auth: true do
+  get "/edit/:id" do
+    protect!
+
     @blog = Blog.find_by(id: params[:id])
 
     if @blog
