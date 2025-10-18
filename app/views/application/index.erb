@@ -1,4 +1,4 @@
-<p>
+<p class="intro">
   I'm Arsen, a software developer living in Warsaw. This is the place where I write up what I learn.
 </p>
 
@@ -8,8 +8,8 @@
   <ul>
     <% @blogs.each do |blog| %>
       <li>
-        <a href="/blogs/<%= blog.id %>">
-            <%= blog.title %>
+        <a href="/blogs/<%= blog.id %>" class="link">
+          <%= blog.title %>
         </a>
         -
         <time>

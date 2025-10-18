@@ -1,0 +1,63 @@
+@import url('_normalize.css');
+@import url('colors.css');
+@import url('_header.css');
+@import url('_content.css');
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.clearfix:after {
+ 	content: ".";
+ 	visibility: hidden;
+ 	display: block;
+ 	height: 0;
+ 	clear: both;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0.75em 0;
+}
+
+h1 {
+  font-size: 2.75em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  font-size: 1.25em;
+}
+
+ul {
+  li {
+    font-size: 1.25em;
+  }
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: .35em;
+  padding: .5em 1em;
+  line-height: 1.75;
+  height: 35px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+textarea {
+  min-height: 180px;
+}

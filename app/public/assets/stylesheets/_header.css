@@ -7,12 +7,21 @@
  		color: var(--color-header-text);
 
     p {
- 			display: inline;
- 		}
+      display: inline;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .link {
+      margin-left: 20px;
+      padding: 5px;
+    }
 
     a {
  			color: var(--color-header-text);
- 			text-decoration: none;
  		}
 
     .buttons {
@@ -24,14 +33,4 @@
       }
 		}
 	}
-}
-
-.header__logo {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.header__link {
-  margin-left: 20px;
-  padding: 5px;
 }
