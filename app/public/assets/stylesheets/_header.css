@@ -11,18 +11,17 @@
     }
 
     .logo {
-      font-size: 32px;
+      font-size: 2em;
       font-weight: bold;
+      color: var(--color-logo);
     }
 
     .link {
-      margin-left: 20px;
+      margin-left: 1em;
       padding: 5px;
+      font-size: 1.25em;
+      font-weight: 700;
     }
-
-    a {
- 			color: var(--color-header-text);
- 		}
 
     .buttons {
  			float: right;

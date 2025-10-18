@@ -41,6 +41,11 @@
   align-items: center;
 }
 
+.posted-on-section {
+  margin-bottom: 1em;
+  font-size: 1.25em;
+}
+
 .blog-form {
   display: flex;
   justify-content: space-between;

@@ -6,7 +6,7 @@
       <a href="/blogs/edit/<%= @blog.id %>" class="button-regular">Edit</a>
     <% end  %>
   </div>
-  <p>Posted on <%= @blog.created_at.strftime("%-d %B %Y")%></p>
+  <div class="posted-on-section">Posted on <%= @blog.created_at.strftime("%-d %B %Y")%></div>
 
   <p><%= markdown_to_html(@blog.content) %></p>
 </div>
