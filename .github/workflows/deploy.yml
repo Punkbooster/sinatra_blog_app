@@ -27,9 +27,8 @@ jobs:
 
           scp -i private_key -P $SSH_PORT -o StrictHostKeyChecking=no -r . $VPS_USER@$VPS_HOST:$TARGET_PATH
 
-          ssh -i private_key -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
-            # Ensure everything is owned by 'arsen'
-            sudo chown -R arsen:arsen $TARGET_PATH
+          ssh -i private_key -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << EOF
+            sudo chown -R $VPS_USER:$VPS_USER $TARGET_PATH
 
             chmod -R u+rwX $TARGET_PATH
           EOF
