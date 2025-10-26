@@ -25,10 +25,11 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
 
-          # 2. Use SCP to securely copy all files/folders from the current directory ('.')
-          #    to the target path on your VPS.
-          #    -i: Use identity file (private_key)
-          #    -P: Specify port
-          #    -o StrictHostKeyChecking=no: Prevents prompt on first connection
-          #    -r: Recursive copy (for folders)
           scp -i private_key -P $SSH_PORT -o StrictHostKeyChecking=no -r . $VPS_USER@$VPS_HOST:$TARGET_PATH
+
+          ssh -i private_key -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
+            # Ensure everything is owned by 'arsen'
+            sudo chown -R arsen:arsen $TARGET_PATH
+
+            chmod -R u+rwX $TARGET_PATH
+          EOF
