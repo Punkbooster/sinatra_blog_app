@@ -1,15 +1,30 @@
-environment ENV["RACK_ENV"] || "development"
+require "fileutils"
 
-workers ENV.fetch("WEB_CONCURRENCY", 2)
+threads ENV.fetch("PUMA_MIN_THREADS", 2), ENV.fetch("PUMA_MAX_THREADS", 10)
 
-threads_count = ENV.fetch("RAILS_MAX_THREADS", 5)
-threads threads_count, threads_count
+app_dir = File.expand_path("../..", __FILE__)
+env = ENV.fetch("RACK_ENV", "development")
 
-base_dir = "/home/arsen/projects/sinatra_blog_app"
+FileUtils.mkdir_p [
+	File.join(app_dir, "run", "sockets"),
+	File.join(app_dir, "run", "pids"),
+	File.join(app_dir, "logs")
+]
 
-bind "unix://#{base_dir}/run/sockets/puma.sock"
+if env == "production"
+	workers ENV.fetch("PUMA_WORKERS", 2)
+	bind "unix://#{app_dir}/run/sockets/puma.sock"
+else
+	port ENV.fetch("PORT", 9292)
+end
 
-pidfile "#{base_dir}/run/pids/puma.pid"
-state_path "#{base_dir}/run/pids/puma.state"
+stdout_redirect "#{app_dir}/logs/puma.stdout.log", "#{app_dir}/logs/puma.stderr.log", true
 
+pidfile "#{app_dir}/run/pids/puma.pid"
+rackup "#{app_dir}/config.ru"
+state_path "#{app_dir}/run/pids/puma.state"
+
+activate_control_app
+
+# Allow `bundle exec puma -C config/puma.rb` to be restarted with `touch tmp/restart.txt`
 plugin :tmp_restart
