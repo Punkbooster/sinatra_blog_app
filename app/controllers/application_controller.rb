@@ -1,8 +1,6 @@
 class ApplicationController < Sinatra::Base
   APP_ROOT = File.expand_path("../..", __dir__)
 
-  require "dotenv/load"
-
   Dir[File.join(APP_ROOT, "app", "helpers", "*.rb")].each { |file| require file }
   Dir[File.join(APP_ROOT, "app", "utils", "*.rb")].each { |file| require file }
 
