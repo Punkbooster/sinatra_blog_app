@@ -1,0 +1,34 @@
+name: Deploy Code to VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  upload_code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Deploy Code to VPS
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          TARGET_PATH: /home/arsen/projects/sinatra_blog_app
+
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+
+          # 2. Use SCP to securely copy all files/folders from the current directory ('.')
+          #    to the target path on your VPS.
+          #    -i: Use identity file (private_key)
+          #    -P: Specify port
+          #    -o StrictHostKeyChecking=no: Prevents prompt on first connection
+          #    -r: Recursive copy (for folders)
+          scp -i private_key -P $SSH_PORT -o StrictHostKeyChecking=no -r . $VPS_USER@$VPS_HOST:$TARGET_PATH
