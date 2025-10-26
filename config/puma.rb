@@ -1,14 +1,18 @@
-environment ENV['RACK_ENV'] || 'development'
-port        ENV['PORT']     || 3000
+environment ENV["RACK_ENV"] || "development"
+port        ENV["PORT"]     || 3000
 
-workers ENV.fetch('WEB_CONCURRENCY', 2)
+workers ENV.fetch("WEB_CONCURRENCY", 2)
 
-threads_count = ENV.fetch('RAILS_MAX_THREADS', 5)
+threads_count = ENV.fetch("RAILS_MAX_THREADS", 5)
 threads threads_count, threads_count
 
-bind "unix:///var/www/sinatra_blog/shared/tmp/sockets/puma.sock"
+base_dir = "/home/arsen/projects/sinatra_blog_app"
+mkdir_p "#{base_dir}/run/sockets"
+mkdir_p "#{base_dir}/run/pids"
 
-pidfile "/var/www/sinatra_blog/shared/tmp/pids/puma.pid"
-state_path "/var/www/sinatra_blog/shared/tmp/pids/puma.state"
+bind "unix://#{base_dir}/run/sockets/puma.sock"
+
+pidfile "#{base_dir}/run/pids/puma.pid"
+state_path "#{base_dir}/run/pids/puma.state"
 
 plugin :tmp_restart
