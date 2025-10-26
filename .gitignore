@@ -1,3 +1,5 @@
 .env
 /config/database.yml
 /logs
+/.git
+/.github
