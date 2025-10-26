@@ -1,9 +1,6 @@
 require "bundler"
 Bundler.require
 
-require 'dotenv'
-Dotenv.load
-
 # get the path of the root of the app
 APP_ROOT = File.expand_path("..", __dir__)
 
