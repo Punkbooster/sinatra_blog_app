@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load
+
 if ENV.fetch("RACK_ENV", "development") == "production"
   database_url = ENV["DATABASE_URL"]
 
