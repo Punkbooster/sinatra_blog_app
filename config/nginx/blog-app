@@ -1,0 +1,26 @@
+upstream sinatra_server {
+    server unix:///home/arsen/projects/sinatra_blog_app/run/sockets/puma.sock fail_timeout=0;
+}
+
+server {
+    listen xxxxx;
+
+    server_name xxxxxxx;
+
+    keepalive_timeout 5;
+    client_max_body_size 4G;
+
+    access_log /home/arsen/projects/sinatra_blog_app/logs/nginx-access.log;
+    error_log /home/arsen/projects/sinatra_blog_app/logs/nginx-error.log;
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+
+        if (!-f $request_filename) {
+            proxy_pass http://sinatra_server;
+            break;
+        }
+    }
+}
