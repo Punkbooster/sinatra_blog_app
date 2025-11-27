@@ -1,21 +1,25 @@
 <p class="intro">
-  I'm Arsen, a software developer living in Warsaw. This is the place where I write up what I learn.
+  I'm Arsen, a software developer living in Warsaw. This is the place.
 </p>
 
 <section>
-  <h1>Articles</h1>
+  <% if @blogs.any? %>
+    <h1>Articles</h1>
 
-  <ul>
-    <% @blogs.each do |blog| %>
-      <li>
-        <a href="/blogs/<%= blog.id %>" class="link">
-          <%= blog.title %>
-        </a>
-        -
-        <time>
-          <%= blog.created_at.strftime("%-d %B %Y") %>
-        </time>
-      </li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @blogs.each do |blog| %>
+        <li>
+          <a href="/blogs/<%= blog.id %>" class="link">
+            <%= blog.title %>
+          </a>
+          -
+          <time>
+            <%= blog.created_at.strftime("%-d %B %Y") %>
+          </time>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h1>Nothing to see here</h1>
+  <% end %>
 </section>

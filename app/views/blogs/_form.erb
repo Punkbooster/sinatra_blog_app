@@ -3,7 +3,9 @@
     <input type="hidden" name="_method" value="put">
   <% end %>
 
-  <input type="text" name="blog[title]" placeholder="Enter your blog's title…" value="<%= blog&.title %>">
-  <textarea name="blog[content]" rows="8" cols="80"><%= blog&.content %></textarea>
+  <input type="text" name="blog[title]" placeholder="Start typing.." value="<%= blog&.title %>">
+
+  <textarea name="blog[content]" placeholder="Start typing..."><%= blog&.content %></textarea>
+
   <input type="submit" value="<%= submit_text %>" class="button-regular">
 </form>
