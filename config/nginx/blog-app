@@ -3,9 +3,10 @@ upstream sinatra_server {
 }
 
 server {
-    listen xxxxx;
+    listen 80;
+    listen [::]:80;
 
-    server_name xxxxxxx;
+    server_name srv26.mikr.us 74921.toadres.pl;
 
     keepalive_timeout 5;
     client_max_body_size 4G;
