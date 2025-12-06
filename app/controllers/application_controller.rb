@@ -1,4 +1,22 @@
 class ApplicationController < Sinatra::Base
+  configure :development do
+    set :show_exceptions, true
+  end
+
+  configure :production do
+    set :show_exceptions, false
+  end
+
+  helpers do
+    def development?
+      settings.environment == :development
+    end
+
+    def production?
+      settings.environment == :production
+    end
+  end
+
   APP_ROOT = File.expand_path("../..", __dir__)
 
   Dir[File.join(APP_ROOT, "app", "helpers", "*.rb")].each { |file| require file }

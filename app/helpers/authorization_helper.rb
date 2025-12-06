@@ -2,7 +2,7 @@ require_relative '../utils/protected_action'
 
 module AuthorizationHelper
   def protect!(credentials={})
-    return if authorized? || development?
+    return if authorized? || settings.development?
 
     guard = Authorization::ProtectedAction.new(self, credentials)
     guard.check!

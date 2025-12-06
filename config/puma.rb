@@ -1,7 +1,7 @@
-require 'dotenv'
-Dotenv.load unless ENV['RACK_ENV'] == 'production'
-
+require "dotenv"
 require "fileutils"
+
+Dotenv.load
 
 threads ENV.fetch("PUMA_MIN_THREADS", 2), ENV.fetch("PUMA_MAX_THREADS", 10)
 
@@ -26,8 +26,3 @@ stdout_redirect "#{app_dir}/logs/puma.stdout.log", "#{app_dir}/logs/puma.stderr.
 pidfile "#{app_dir}/run/pids/puma.pid"
 rackup "#{app_dir}/config.ru"
 state_path "#{app_dir}/run/pids/puma.state"
-
-activate_control_app
-
-# Allow `bundle exec puma -C config/puma.rb` to be restarted with `touch tmp/restart.txt`
-plugin :tmp_restart
