@@ -1,5 +1,5 @@
 .content-wrapper {
-  max-width: 680px;
+  max-width: 880px;
   width: 100%;
   word-wrap: break-word;
   word-break: break-word;
@@ -53,4 +53,13 @@
   flex-direction: column;
   gap: 1em;
   font-size: 1.1em;
+  margin-bottom: 5em;
+
+  textarea {
+    min-height: 700px;
+    resize: vertical;
+    padding: 0.5em;
+    font-family: inherit;
+    font-size: 1em;
+  }
 }
