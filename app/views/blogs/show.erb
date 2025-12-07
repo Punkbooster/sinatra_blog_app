@@ -1,12 +1,16 @@
 <div>
   <div class="title-section">
     <h1><%= @blog.title %></h1>
-
+    <% binding.pry %>
     <% if authorized? %>
       <a href="/blogs/edit/<%= @blog.id %>" class="button-regular">Edit</a>
-    <% end  %>
+    <% else  %>
+      <a href="/" class="button-regular">Back</a>
+    <% end %>
   </div>
-  <div class="posted-on">Posted on <%= @blog.created_at.strftime("%-d %B %Y")%></div>
+  <div>
+    <span class="posted-on-label">Posted on</span><span class="posted-on-date"> <%= @blog.created_at.strftime("%-d %B %Y")%></span>
+  </div>
 
   <p><%= markdown_to_html(@blog.content) %></p>
 </div>

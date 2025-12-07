@@ -17,11 +17,11 @@ FileUtils.mkdir_p [
 if env == "production"
   workers ENV.fetch("PUMA_WORKERS", 2)
   bind "unix://#{app_dir}/run/sockets/puma.sock"
+  stdout_redirect "#{app_dir}/logs/puma.stdout.log", "#{app_dir}/logs/puma.stderr.log", true
 else
   port ENV.fetch("PORT", 9292)
 end
 
-stdout_redirect "#{app_dir}/logs/puma.stdout.log", "#{app_dir}/logs/puma.stderr.log", true
 
 pidfile "#{app_dir}/run/pids/puma.pid"
 rackup "#{app_dir}/config.ru"
