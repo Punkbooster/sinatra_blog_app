@@ -12,6 +12,7 @@
       font-size: 3em;
       font-weight: bold;
       color: var(--color-white);
+      font-style: italic;
     }
 
     .link {
