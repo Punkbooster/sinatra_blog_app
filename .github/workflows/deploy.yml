@@ -20,17 +20,15 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
           TARGET_PATH: /home/arsen/projects/sinatra_blog_app
-          SERVICE_NAME: sinatra-blog
 
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
 
-          # Now copy the files
           scp -i private_key -P $SSH_PORT -o StrictHostKeyChecking=no -r . $VPS_USER@$VPS_HOST:$TARGET_PATH
 
-          # Restart the service
           ssh -i private_key -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << EOF
-            sudo supervisorctl restart $SERVICE_NAME
-            echo "Deployment successful! Service restarted."
+            sudo chown -R $VPS_USER:$VPS_USER $TARGET_PATH
+
+            chmod -R u+rwX $TARGET_PATH
           EOF
