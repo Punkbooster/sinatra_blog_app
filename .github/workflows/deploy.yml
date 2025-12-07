@@ -26,12 +26,6 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
 
-          # Fix permissions before copying
-          ssh -i private_key -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << EOF
-            sudo chown -R $VPS_USER:$VPS_USER $TARGET_PATH
-            sudo chmod -R u+w $TARGET_PATH
-          EOF
-
           # Now copy the files
           scp -i private_key -P $SSH_PORT -o StrictHostKeyChecking=no -r . $VPS_USER@$VPS_HOST:$TARGET_PATH
 

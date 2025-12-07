@@ -56,7 +56,6 @@
   flex-direction: column;
   gap: 1em;
   font-size: 1.1em;
-  margin-bottom: 5em;
 
   textarea {
     min-height: 700px;
